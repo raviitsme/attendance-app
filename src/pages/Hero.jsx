@@ -1,6 +1,18 @@
+import { useState } from "react";
 import Button from "../components/Button";
 
 const Hero = () => {
+  // Generate particle trail positions once
+  const [trailParticles] = useState(() =>
+    Array.from({ length: 10 }).map(() => ({
+      top: Math.random() * 100 + "%",
+      left: Math.random() * 100 + "%",
+      size: Math.random() * 2 + 1 + "px",
+      delay: Math.random() * 5 + "s",
+      color: ["#FFB84D", "#FF6B9D", "#4ECDC4"][Math.floor(Math.random() * 3)],
+    }))
+  );
+
   return (
     <section className="relative min-h-screen flex flex-col justify-center items-center text-center px-6 bg-deepNavy overflow-hidden">
       {/* Subtle Blobs */}
@@ -12,6 +24,22 @@ const Hero = () => {
       <div className="absolute inset-0 flex justify-center items-center">
         <div className="w-150 h-150 bg-gradient-radial from-amberGold/30 via-rosePink/20 to-turquoise/10 rounded-full blur-3xl pointer-events-none"></div>
       </div>
+
+      {/* Particle Trail / Sparkles */}
+      {trailParticles.map((p, idx) => (
+        <div
+          key={idx}
+          className="absolute rounded-full animate-trail pointer-events-none"
+          style={{
+            top: p.top,
+            left: p.left,
+            width: p.size,
+            height: p.size,
+            backgroundColor: p.color,
+            animationDelay: p.delay,
+          }}
+        ></div>
+      ))}
 
       {/* Hero Content */}
       <h1 className="text-5xl md:text-6xl font-bold text-white z-10 mb-4">
@@ -30,25 +58,25 @@ const Hero = () => {
         </button>
       </div>
 
-      {/* Blob Animation */}
+      {/* Animations */}
       <style>
         {`
-      @keyframes blob {
-        0%, 100% { transform: translate(0px, 0px) scale(1); }
-        33% { transform: translate(20px, -30px) scale(1.05); }
-        66% { transform: translate(-15px, 15px) scale(0.95); }
-      }
-      .animate-blob { animation: blob 8s infinite; }
-      .animation-delay-2000 { animation-delay: 2s; }
-      .animation-delay-4000 { animation-delay: 4s; }
+          @keyframes blob {
+            0%, 100% { transform: translate(0px, 0px) scale(1); }
+            33% { transform: translate(20px, -30px) scale(1.05); }
+            66% { transform: translate(-15px, 15px) scale(0.95); }
+          }
+          .animate-blob { animation: blob 12s infinite; }
+          .animation-delay-2000 { animation-delay: 2s; }
+          .animation-delay-4000 { animation-delay: 4s; }
 
-      @keyframes blob {
-      0%, 100% { transform: translate(0px, 0px) scale(1); }
-      33% { transform: translate(30px, -40px) scale(1.1); }
-      66% { transform: translate(-20px, 30px) scale(0.9); }
-      }
-.animate-blob { animation: blob 12s infinite; }
-    `}
+          @keyframes trail {
+            0% { transform: translate(0, 0) scale(1); opacity: 0.5; }
+            50% { transform: translate(-10px, -30px) scale(1.2); opacity: 1; }
+            100% { transform: translate(-20px, -60px) scale(1); opacity: 0; }
+          }
+          .animate-trail { animation: trail 6s ease-in-out infinite; }
+        `}
       </style>
     </section>
   );
