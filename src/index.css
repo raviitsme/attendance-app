@@ -1,0 +1,14 @@
+@config "../tailwind.config.js";
+@import "tailwindcss";
+/* Custom reusable classes */
+
+body {
+  background: rgba(10, 14, 26, 0.962); 
+}
+
+@layer components {
+  .nav-link {
+    @apply text-white hover:text-[#8686ac] transition duration-300;
+  }
+
+}
