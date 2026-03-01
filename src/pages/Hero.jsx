@@ -52,11 +52,11 @@ const Hero = () => {
       <div className="flex gap-4 z-10">
         <Button
           variant="primary"
-          className="border-double border border-white hover:bg-amberGold hover:text-deepNavy transition-all duration-200 ease-in-out"
+          className="border-double border border-white focus:bg-amberGold focus:text-deepNavy hover:bg-amberGold hover:text-deepNavy transition-all duration-200 ease-in-out"
         >
           Get Started
         </Button>
-        <Button variant="outline" className="border-none hover:text-amberGold">
+        <Button variant="outline" className="border-none focus:text-amberGold hover:text-amberGold ">
           Learn More
         </Button>
       </div>
