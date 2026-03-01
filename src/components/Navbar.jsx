@@ -85,13 +85,13 @@ const Navbar = () => {
               <div className="mt-6 flex flex-col gap-4 font-bold">
                 <Button
                   variant="outline"
-                  className="hover:bg-white hover:text-deepNavy"
+                  className="focus:bg-white focus:text-deepNavy"
                 >
                   Login
                 </Button>
                 <Button
                   variant="primary"
-                  className="hover:bg-white hover:text-deepNavy"
+                  className="focus:bg-white focus:text-deepNavy"
                 >
                   Get Started
                 </Button>
