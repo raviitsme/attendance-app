@@ -10,7 +10,7 @@ const Hero = () => {
       size: Math.random() * 2 + 1 + "px",
       delay: Math.random() * 5 + "s",
       color: ["#FFB84D", "#FF6B9D", "#4ECDC4"][Math.floor(Math.random() * 3)],
-    }))
+    })),
   );
 
   return (
@@ -50,12 +50,15 @@ const Hero = () => {
       </p>
 
       <div className="flex gap-4 z-10">
-        <button className="bg-amberGold text-deepNavy px-6 py-3 rounded-lg font-semibold hover:opacity-90 transition">
+        <Button
+          variant="primary"
+          className="border-double border border-white hover:bg-amberGold hover:text-deepNavy transition-all duration-200 ease-in-out"
+        >
           Get Started
-        </button>
-        <button className="border border-white px-6 py-3 rounded-lg font-semibold hover:bg-white hover:text-deepNavy transition">
+        </Button>
+        <Button variant="outline" className="border-none hover:text-amberGold">
           Learn More
-        </button>
+        </Button>
       </div>
 
       {/* Animations */}
