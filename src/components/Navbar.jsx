@@ -103,19 +103,19 @@ const Navbar = () => {
                 className="active:text-amberGold hover:text-amberGold focus:text-amberGold transition text-center duration-200 cursor-pointer"
                 onClick={() => setMenuOpen(false)}
               >
-                Home
+                <a href="#">Home</a>
               </li>
               <li
                 className="active:text-amberGold hover:text-amberGold focus:text-amberGold transition text-center duration-200 cursor-pointer"
                 onClick={() => setMenuOpen(false)}
               >
-                Features
+                <a href="#features">Features</a>
               </li>
               <li
                 className="active:text-amberGold hover:text-amberGold focus:text-amberGold transition text-center duration-200 cursor-pointer"
                 onClick={() => setMenuOpen(false)}
               >
-                About
+                <a href="#about">About</a>
               </li>
               <li
                 className="active:text-amberGold hover:text-amberGold focus:text-amberGold transition text-center duration-200 cursor-pointer"
