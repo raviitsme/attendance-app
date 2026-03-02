@@ -57,14 +57,14 @@ const Hero = () => {
         <div className="flex gap-4 justify-center">
           <Button
             variant="primary"
-            className="border border-white hover:scale-110 active:scale-95 hover:bg-amberGold hover:text-deepNavy transition-all duration-300"
+            className="border border-white active:bg-amberGold hover:scale-110 active:scale-95 hover:bg-amberGold hover:text-deepNavy transition-all duration-300"
           >
             Get Started
           </Button>
 
           <Button
             variant="outline"
-            className="hover:text-amberGold hover:scale-110 active:scale-95 transition-all duration-300"
+            className="hover:text-amberGold hover:scale-110 active:text-amberGold active:scale-95 transition-all duration-300"
           >
             Learn More
           </Button>
