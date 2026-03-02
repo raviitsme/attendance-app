@@ -1,6 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 @config "../tailwind.config.js";
 @import "tailwindcss";
 /* Custom reusable classes */
+html {
+  scroll-behavior: smooth;
+}
 
 body {
   background: rgba(10, 14, 26, 0.962); 
@@ -10,5 +14,34 @@ body {
   .nav-link {
     @apply text-white hover:text-[#8686ac] transition duration-300;
   }
+}
 
+@keyframes moveOne {
+  0%   { transform: translate3d(0, 0, 0) scale(1); }
+  50%  { transform: translate3d(120px, -140px, 0) scale(1.05); }
+  100% { transform: translate3d(0, 0, 0) scale(1); }
+}
+
+@keyframes moveTwo {
+  0%   { transform: translate3d(0, 0, 0) scale(1); }
+  50%  { transform: translate3d(-140px, 100px, 0) scale(1.08); }
+  100% { transform: translate3d(0, 0, 0) scale(1); }
+}
+
+@keyframes moveThree {
+  0%   { transform: translate3d(-50%, 0, 0) scale(1); }
+  50%  { transform: translate3d(-50%, -120px, 0) scale(1.06); }
+  100% { transform: translate3d(-50%, 0, 0) scale(1); }
+}
+
+.animate-move-one {
+  animation: moveOne 18s ease-in-out infinite;
+}
+
+.animate-move-two {
+  animation: moveTwo 22s ease-in-out infinite;
+}
+
+.animate-move-three {
+  animation: moveThree 20s ease-in-out infinite;
 }

@@ -14,6 +14,9 @@ export default {
         amberGold: "#FFB84D",
         deepNavy: "#0A0E1A",
       },
+      fontFamily : {
+        poppins : ['poppins', 'sans-serif']
+      },
     },
   },
   plugins: [],
