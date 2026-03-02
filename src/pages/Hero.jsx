@@ -2,34 +2,37 @@ import { useState } from "react";
 import Button from "../components/Button";
 
 const Hero = () => {
-  // Generate particle trail positions once
+  // Particle trail positions
   const [trailParticles] = useState(() =>
     Array.from({ length: 10 }).map(() => ({
       top: Math.random() * 100 + "%",
       left: Math.random() * 100 + "%",
       size: Math.random() * 2 + 1 + "px",
       delay: Math.random() * 5 + "s",
-      color: ["#FFB84D", "#FF6B9D", "#4ECDC4"][Math.floor(Math.random() * 3)],
-    })),
+      color: ["#FFB84D", "#FF6B9D", "#4ECDC4"][
+        Math.floor(Math.random() * 3)
+      ],
+    }))
   );
 
   return (
     <section className="relative min-h-screen flex flex-col justify-center items-center text-center px-6 bg-deepNavy overflow-hidden">
-      {/* Subtle Blobs */}
+
+      {/* Floating Blobs */}
       <div className="absolute -top-20 -left-20 w-72 h-72 bg-rosePink rounded-full opacity-30 animate-blob blob"></div>
       <div className="absolute top-20 -right-25 w-80 h-80 bg-turquoise rounded-full opacity-25 animate-blob blob animation-delay-2000"></div>
       <div className="absolute -bottom-15 left-20 w-64 h-64 bg-amberGold rounded-full opacity-20 animate-blob blob animation-delay-4000"></div>
 
       {/* Radial Glow */}
-      <div className="absolute inset-0 flex justify-center items-center">
-        <div className="w-150 h-150 bg-gradient-radial from-amberGold/30 via-rosePink/20 to-turquoise/10 rounded-full blur-3xl pointer-events-none"></div>
+      <div className="absolute inset-0 flex justify-center items-center pointer-events-none z-0">
+        <div className="w-150 h-150 bg-gradient-radial from-amberGold/30 via-rosePink/20 to-turquoise/10 rounded-full blur-3xl"></div>
       </div>
 
-      {/* Particle Trail / Sparkles */}
+      {/* Particle Trail */}
       {trailParticles.map((p, idx) => (
         <div
           key={idx}
-          className="absolute rounded-full animate-trail pointer-events-none"
+          className="absolute rounded-full animate-trail pointer-events-none z-0"
           style={{
             top: p.top,
             left: p.left,
@@ -41,14 +44,38 @@ const Hero = () => {
         ></div>
       ))}
 
-      {/* Hero Content */}
+      {/* Tagline */}
+      <p className="text-white/60 uppercase tracking-widest mb-2 z-10">
+        Your All-in-One Attendance Platform
+      </p>
+
+      {/* Hero Heading */}
       <h1 className="text-5xl md:text-6xl font-bold text-white z-10 mb-4">
         Welcome to AttendX
       </h1>
-      <p className="text-xl md:text-2xl text-white z-10 max-w-xl mb-8">
+
+      {/* Subheading */}
+      <p className="text-xl md:text-2xl text-white z-10 max-w-xl mb-6">
         Simplify attendance tracking and activity management in one platform.
       </p>
 
+      {/* Impact Stats */}
+      <div className="flex gap-8 z-10 justify-center mb-8">
+        <div className="text-white">
+          <span className="font-bold text-2xl md:text-3xl">1,200+</span>
+          <p className="text-sm md:text-base text-white/70">Students tracked</p>
+        </div>
+        <div className="text-white">
+          <span className="font-bold text-2xl md:text-3xl">50+</span>
+          <p className="text-sm md:text-base text-white/70">Schools onboarded</p>
+        </div>
+        <div className="text-white">
+          <span className="font-bold text-2xl md:text-3xl">99%</span>
+          <p className="text-sm md:text-base text-white/70">Attendance accuracy</p>
+        </div>
+      </div>
+
+      {/* Buttons */}
       <div className="flex gap-4 z-10">
         <Button
           variant="primary"
@@ -56,7 +83,10 @@ const Hero = () => {
         >
           Get Started
         </Button>
-        <Button variant="outline" className="border-none focus:text-amberGold hover:text-amberGold active:text-amberGold">
+        <Button
+          variant="outline"
+          className="border-none focus:text-amberGold hover:text-amberGold active:text-amberGold"
+        >
           Learn More
         </Button>
       </div>
@@ -79,6 +109,12 @@ const Hero = () => {
             100% { transform: translate(-20px, -60px) scale(1); opacity: 0; }
           }
           .animate-trail { animation: trail 6s ease-in-out infinite; }
+
+          @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(10px); }
+          }
+          .animate-bounce { animation: bounce 1s infinite; }
         `}
       </style>
     </section>

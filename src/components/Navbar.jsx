@@ -40,7 +40,7 @@ const Navbar = () => {
             </Button>
             <Button
               variant="primary"
-              className="hover:bg-white hover:text-deepNavy"
+              className="hover:bg-amberGold hover:text-deepNavy"
             >
               Get Started
             </Button>
