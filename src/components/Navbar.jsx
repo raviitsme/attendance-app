@@ -91,7 +91,7 @@ const Navbar = () => {
                 </Button>
                 <Button
                   variant="primary"
-                  className="focus:bg-white focus:text-deepNavy"
+                  className="focus:bg-amberGold focus:text-deepNavy"
                 >
                   Get Started
                 </Button>
