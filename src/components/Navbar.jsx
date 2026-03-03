@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import Button from "./Button";
 import { useEffect, useState } from "react";
 import { FaBars, FaTimes } from "react-icons/fa";
-const Navbar = () => {
+const Navbar = ({openLoginModal, openSignupModal}) => {
   const [menuOpen, setMenuOpen] = useState(false);
   const [show, setShow] = useState(true);
   const [lastScroll, setLastScroll] = useState(0);
@@ -66,12 +66,14 @@ const Navbar = () => {
             <Button
               variant="outline"
               className="hover:bg-white hover:text-deepNavy"
+              onClick={openLoginModal}
             >
               Login
             </Button>
             <Button
               variant="primary"
               className="hover:bg-amberGold hover:text-deepNavy"
+              onClick={openSignupModal}
             >
               Get Started
             </Button>

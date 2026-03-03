@@ -1,4 +1,4 @@
-const Button = ({ children, variant, className="" }) => {
+const Button = ({ children, variant, className="", onClick }) => {
   const baseStyles = 'px-4 py-2 rounded-xl font-semibold transition duration 200 cursor-pointer';
 
   const varients = {
@@ -7,7 +7,7 @@ const Button = ({ children, variant, className="" }) => {
   };
 
   return (
-    <button className={`${baseStyles} ${varients[variant]} ${className}`}>
+    <button className={`${baseStyles} ${varients[variant]} ${className}`} onClick={onClick}>
       {children}
     </button>
   )
