@@ -29,7 +29,7 @@ export const LoginForm = ({ switchToSignup }) => {
     </div>
     <Button
       variant="primary"
-      className="hover:bg-amberGold border transition-all duration-200 hover:text-deepNavy"
+      className="hover:bg-amberGold border transition-all duration-200 focus:bg-amberGold focus:text-deepNavy hover:text-deepNavy"
     >
       Login
     </Button>
@@ -79,7 +79,7 @@ export const SignupForm = ({ switchToLogin }) => {
     </div>
     <Button
       variant="primary"
-      className="hover:bg-amberGold border transition-all duration-200 hover:text-deepNavy"
+      className="hover:bg-amberGold border transition-all duration-200 focus:bg-amberGold focus:text-deepNavy hover:text-deepNavy"
     >
       Register
     </Button>
