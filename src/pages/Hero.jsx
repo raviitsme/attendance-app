@@ -1,7 +1,7 @@
 import { useState } from "react";
 import Button from "../components/Button";
 
-const Hero = () => {
+const Hero = ({ openSignupModal }) => {
   const [trailParticles] = useState(() =>
     Array.from({ length: 10 }).map(() => ({
       top: Math.random() * 100 + "%",
@@ -11,6 +11,7 @@ const Hero = () => {
       color: ["#FFB84D", "#FF6B9D", "#4ECDC4"][Math.floor(Math.random() * 3)],
     })),
   );
+
 
   return (
     <section className="relative min-h-screen flex flex-col justify-center items-center text-center px-6 overflow-hidden">
@@ -58,6 +59,7 @@ const Hero = () => {
           <Button
             variant="primary"
             className="border border-white active:bg-amberGold hover:scale-110 active:scale-95 hover:bg-amberGold hover:text-deepNavy transition-all duration-300"
+            onClick={openSignupModal}
           >
             Get Started
           </Button>
@@ -66,7 +68,7 @@ const Hero = () => {
             variant="outline"
             className="hover:text-amberGold hover:scale-110 active:text-amberGold active:scale-95 transition-all duration-300"
           >
-            Learn More
+            <a href="#features">Learn more</a>
           </Button>
         </div>
       </div>

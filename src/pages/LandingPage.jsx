@@ -12,10 +12,35 @@ const LandingPage = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isLogin, setIsLogin] = useState(true);
 
+  const [trailParticles] = useState(() =>
+  Array.from({ length: 30 }).map(() => ({
+    top: Math.random() * 100 + "%",
+    left: Math.random() * 100 + "%",
+    size: Math.random() * 2 + 1 + "px",
+    delay: Math.random() * 5 + "s",
+    color: ["#FFB84D", "#FF6B9D", "#4ECDC4"][Math.floor(Math.random() * 3)],
+  }))
+);
+
   return (
     <div className="relative min-h-screen overflow-hidden">
+        <div className="absolute inset-0 bg-linear-to-br from-[#0A0E1A] via-[#111827] to-[#050810]" />
+      <div className="absolute inset-0 z-10 pointer-events-none">
+        {trailParticles.map((p, i) => (
+          <span
+          key={i}
+          className="absolute rounded-full animate-trail animate-pulse"
+          style={{
+            top : p.top,
+            left : p.left,
+            width : p.size,
+            height : p.size,
+            backgroundColor : p.color,
+            animationDelay : p.delay
+          }} />
+        ))}
+      </div>
       {/* Gradient Background */}
-      <div className="absolute inset-0 bg-linear-to-br from-[#0A0E1A] via-[#111827] to-[#050810]" />
 
       {/* Animated Blobs */}
       <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
@@ -36,7 +61,10 @@ const LandingPage = () => {
             setIsModalOpen(true);
           }}
         />
-        <Hero />
+        <Hero openSignupModal={() => {
+          setIsLogin(false)
+          setIsModalOpen(true)
+        }} />
         <section id="features">
           <Features />
         </section>
@@ -56,6 +84,19 @@ const LandingPage = () => {
           <SignupForm switchToLogin={() => setIsLogin(true)}/>
         )}
       </Modal>
+      <style>
+        {`
+          @keyframes trail {
+            0% { transform: translate(0, 0) scale(1); opacity: 0.5; }
+            50% { transform: translate(-10px, -30px) scale(1.2); opacity: 1; }
+            100% { transform: translate(-20px, -60px) scale(1); opacity: 0; }
+          }
+          .animate-trail {
+            animation: trail 6s ease-in-out infinite;
+          }
+          
+        `}
+      </style>
     </div>
   );
 };
