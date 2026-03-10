@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import Button from "./Button";
 import { useEffect, useState } from "react";
 import { FaBars, FaTimes } from "react-icons/fa";
-const Navbar = ({ openLoginModal, openSignupModal }) => {
+const Navbar = ({ openLoginModal, openSignupModal, openUniversityModal }) => {
   const [menuOpen, setMenuOpen] = useState(false);
   const [show, setShow] = useState(true);
   const [lastScroll, setLastScroll] = useState(0);
@@ -58,7 +58,10 @@ const Navbar = ({ openLoginModal, openSignupModal }) => {
                 <a href="#about">About</a>
               </li>
               <li className="hover:text-amberGold cursor-pointer transition duration-200">
-                Contact Us
+                <a href="#contact">Contact Us</a>
+              </li>
+              <li className="hover:text-amberGold cursor-pointer transition duration-200" onClick={openUniversityModal}>
+                Running an university?
               </li>
             </ul>
 
@@ -124,6 +127,12 @@ const Navbar = ({ openLoginModal, openSignupModal }) => {
                   onClick={() => setMenuOpen(false)}
                 >
                   <a href="#contact">Contact Us</a>
+                </li>
+                <li
+                  className="active:text-amberGold hover:text-amberGold focus:text-amberGold transition text-center duration-200 cursor-pointer"
+                  onClick={() => setMenuOpen(false)}
+                >
+                  Running an university?
                 </li>
               </ul>
               <div className="mt-6 flex flex-col gap-4 font-bold">

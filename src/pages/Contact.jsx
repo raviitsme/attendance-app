@@ -6,7 +6,7 @@ const Contact = () => {
         {/* Heading */}
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold text-white">
-            Get in <span className="text-amberGold">Touch</span>
+            Get in <span className="text-royalPurple">Touch</span>
           </h2>
           <p className="text-white/60 mt-6 max-w-2xl mx-auto">
             Have questions or want to collaborate? We’d love to hear from you.

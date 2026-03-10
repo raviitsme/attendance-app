@@ -5,39 +5,40 @@ import Features from "./Features";
 import Footer from "./Footer";
 import Hero from "./Hero";
 import Modal from "../components/Modal";
-import { LoginForm, SignupForm } from "../components/AuthForms";
+import { LoginForm, SignupForm, ForgotPasswordForm, UniversityForm } from "../components/AuthForms";
 import { useState } from "react";
 
 const LandingPage = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [isLogin, setIsLogin] = useState(true);
+  const [authMode, setAuthMode] = useState("login");
 
   const [trailParticles] = useState(() =>
-  Array.from({ length: 30 }).map(() => ({
-    top: Math.random() * 100 + "%",
-    left: Math.random() * 100 + "%",
-    size: Math.random() * 2 + 1 + "px",
-    delay: Math.random() * 5 + "s",
-    color: ["#FFB84D", "#FF6B9D", "#4ECDC4"][Math.floor(Math.random() * 3)],
-  }))
-);
+    Array.from({ length: 30 }).map(() => ({
+      top: Math.random() * 100 + "%",
+      left: Math.random() * 100 + "%",
+      size: Math.random() * 2 + 1 + "px",
+      delay: Math.random() * 5 + "s",
+      color: ["#FFB84D", "#FF6B9D", "#4ECDC4"][Math.floor(Math.random() * 3)],
+    })),
+  );
 
   return (
     <div className="relative min-h-screen overflow-hidden">
-        <div className="absolute inset-0 bg-linear-to-br from-[#0A0E1A] via-[#111827] to-[#050810]" />
+      <div className="absolute inset-0 bg-linear-to-br from-[#0A0E1A] via-[#111827] to-[#050810]" />
       <div className="absolute inset-0 z-10 pointer-events-none">
         {trailParticles.map((p, i) => (
           <span
-          key={i}
-          className="absolute rounded-full animate-trail animate-pulse"
-          style={{
-            top : p.top,
-            left : p.left,
-            width : p.size,
-            height : p.size,
-            backgroundColor : p.color,
-            animationDelay : p.delay
-          }} />
+            key={i}
+            className="absolute rounded-full animate-trail animate-pulse"
+            style={{
+              top: p.top,
+              left: p.left,
+              width: p.size,
+              height: p.size,
+              backgroundColor: p.color,
+              animationDelay: p.delay,
+            }}
+          />
         ))}
       </div>
       {/* Gradient Background */}
@@ -53,18 +54,24 @@ const LandingPage = () => {
       <div className="relative z-10">
         <Navbar
           openLoginModal={() => {
-            setIsLogin(true);
+            setAuthMode('login');
             setIsModalOpen(true);
           }}
           openSignupModal={() => {
-            setIsLogin(false);
+            setAuthMode('signup');
+            setIsModalOpen(true);
+          }}
+          openUniversityModal={() => {
+            setAuthMode('university');
             setIsModalOpen(true);
           }}
         />
-        <Hero openSignupModal={() => {
-          setIsLogin(false)
-          setIsModalOpen(true)
-        }} />
+        <Hero
+          openSignupModal={() => {
+            setAuthMode('signup');
+            setIsModalOpen(true);
+          }}
+        />
         <section id="features">
           <Features />
         </section>
@@ -78,10 +85,29 @@ const LandingPage = () => {
           <Footer />
         </section>
       </div>
-      <Modal isOpen={isModalOpen} onClose={() => {setIsModalOpen(false)}}>
-        {isLogin ? (<LoginForm switchToSignup={() => setIsLogin(false)}/>
-        ) : (
-          <SignupForm switchToLogin={() => setIsLogin(true)}/>
+      <Modal
+        isOpen={isModalOpen}
+        onClose={() => {
+          setIsModalOpen(false);
+        }}
+      >
+        {authMode === "login" && (
+          <LoginForm
+            switchToSignup={() => setAuthMode("signup")}
+            switchToForgotPassword={() => setAuthMode("forgot")}
+          />
+        )}
+
+        {authMode === "signup" && (
+          <SignupForm switchToLogin={() => setAuthMode("login")} />
+        )}
+
+        {authMode === "forgot" && (
+          <ForgotPasswordForm switchToLogin={() => setAuthMode("login")} />
+        )}
+
+        {authMode === 'university' && (
+          <UniversityForm switchToLogin={() => setAuthMode("login")} />
         )}
       </Modal>
       <style>
