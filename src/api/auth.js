@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const API = axios.create({
-    baseURL : "http://localhost:3000/auth",
+    baseURL : "https://attendance-app-backend-y8y2.onrender.com/auth",
     withCredentials : true
 });
 
